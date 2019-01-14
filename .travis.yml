@@ -23,15 +23,4 @@ script:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then black --check sample_project; fi
   - coverage run setup.py test
 
-matrix:
-  include:
-    - python: 3.6
-      env: DJANGO="Django>=2.1,<2.2"
-      dist: xenial
-      sudo: true
-    - python: 3.7
-      env: DJANGO="Django>=2.1,<2.2"
-      dist: xenial
-      sudo: true
-
 after_success: codecov
