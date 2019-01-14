@@ -1,0 +1,4 @@
+[run]
+include = sample_project/*
+omit = sample_project/tests/*,sample_project/migrations/*
+branch = 1
