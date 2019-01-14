@@ -2,16 +2,16 @@ version: "2"         # required to adjust maintainability checks
 checks:
   argument-count:
     config:
-      threshold: 4
+      threshold: 7
   complex-logic:
     config:
-      threshold: 4
+      threshold: 7
   file-lines:
     config:
-      threshold: 250
+      threshold: 500
   method-complexity:
     config:
-      threshold: 5
+      threshold: 10
   method-count:
     config:
       threshold: 20
@@ -26,7 +26,21 @@ checks:
       threshold: 4
   similar-code:
     config:
-      threshold: # language-specific defaults. an override will affect all languages.
+      threshold: 50 # language-specific defaults. an override will affect all languages.
   identical-code:
     config:
       threshold: # language-specific defaults. an override will affect all languages.
+plugins:
+  bandit:
+    enabled: true
+  pep8:
+    enabled: true
+  radon:
+    enabled: true
+    threshold: "C"
+  sonar-python:
+    enabled: true
+exclude_patterns:
+  - "sample_project/tests/"
+  - "sample_project/migrations/"
+  
