@@ -1,0 +1,37 @@
+language: python
+
+sudo: false
+
+python:
+  - 3.6
+  - 3.7
+
+env:
+  - DJANGO="Django>=2.1,<2.2"
+
+install:
+  - pip install -U coverage codecov
+  - pip install -U flake8==3.6.0
+  - pip install -U $DJANGO
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then pip install black; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then pip install black; fi
+  - pip freeze
+
+script:
+  - flake8 sample_project
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then black --check sample_project; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then black --check sample_project; fi
+  - coverage run setup.py test
+
+matrix:
+  include:
+    - python: 3.6
+      env: DJANGO="Django>=2.1,<2.2"
+      dist: xenial
+      sudo: true
+    - python: 3.7
+      env: DJANGO="Django>=2.1,<2.2"
+      dist: xenial
+      sudo: true
+
+after_success: codecov
