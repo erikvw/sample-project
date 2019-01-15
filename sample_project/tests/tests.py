@@ -1,6 +1,8 @@
 from django.test import TestCase
 
-from .models import MyModel, MyModel2, MyModel3
+from ..models import MyModel
+
+from .models import MyTestModel1, MyTestModel2
 
 
 class SampleTestCase(TestCase):
@@ -9,13 +11,9 @@ class SampleTestCase(TestCase):
         self.assertEqual(obj.f1, "erik")
 
     def test_sample2(self):
-        obj = MyModel2.objects.create(f1="erik")
+        obj = MyTestModel1.objects.create(f1="erik")
         self.assertEqual(obj.f1, "erik")
 
     def test_sample3(self):
-        obj = MyModel3.objects.create(f1="erik")
-        self.assertEqual(obj.f1, "erik")
-
-    def test_sample4(self):
-        obj = MyModel3.objects.create(f1="erik")
+        obj = MyTestModel2.objects.create(f1="erik")
         self.assertEqual(obj.f1, "erik")
