@@ -40,6 +40,7 @@ This app supports the following combinations of Django and Python:
 2.1        3.6, 3.7
 =========  ========
 
+
 Getting Help
 ------------
 
