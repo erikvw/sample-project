@@ -9,3 +9,8 @@ class MyModel(models.Model):
 class MyModel2(models.Model):
 
     f1 = models.CharField(max_length=25, null=True)
+
+
+class MyModel3(models.Model):
+
+    f1 = models.CharField(max_length=25, null=True)
