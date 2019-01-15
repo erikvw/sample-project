@@ -15,20 +15,18 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 init:
-	python3 -m venv venv
-	source "$(shell pwd)/venv/bin/activate"
 	pip install -U pip
-	pip install "tox>=1.8" coverage Sphinx
+	pip install "tox>=1.8" coverage Sphinx codecov black
 
 test:
 	coverage erase
 	tox
 	coverage html
 
-# docs: documentation
+docs: documentation
 
-# documentation:
-#	sphinx-build -b html -d docs/_build/doctrees docs docs/_build/html
+documentation:
+	sphinx-build -b html -d docs/_build/doctrees docs docs/_build/html
 
 dist: clean
 	pip install -U wheel
