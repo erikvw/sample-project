@@ -1,7 +1,6 @@
 language: python
 
 python:
-- 3.6
 - 3.7
 
 dist: xenial
@@ -13,14 +12,13 @@ install:
   - pip install -U coverage codecov
   - pip install -U flake8==3.6.0
   - pip install -U $DJANGO
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then pip install black; fi
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then pip install black; fi
   - pip freeze
 
 script:
   - flake8 sample_project
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then black --check sample_project; fi
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then black --check sample_project; fi
   - coverage run setup.py test
+
 
 after_success: codecov
